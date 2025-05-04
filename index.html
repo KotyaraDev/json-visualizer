@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Visualizer</title>
+    <link rel="stylesheet" href="src/output.css" />
+  </head>
+  <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center p-6">
+    <a
+        href="https://github.com/KotyaraDev/json-visualizer"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="absolute top-0 right-0"
+    >
+        <img
+        src="src/fork-me-banner.png"
+        alt="Fork me on GitHub"
+        class="w-[150px] h-[150px] border-0"
+        loading="lazy"
+        />
+    </a>  
+
+    <h1 class="text-3xl font-bold mb-6">JSON Visualizer</h1>
+
+    <textarea
+        id="jsonInput"
+        class="w-full max-w-4xl h-48 p-4 bg-white text-gray-800 border border-gray-300 rounded-lg resize-y mb-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Insert JSON here..."
+    ></textarea>
+
+    <div class="flex flex-row flex-wrap justify-center gap-4 mb-6">
+        <button
+            id="visualizeBtn"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+        >Visualized</button>
+
+        <button
+            id="saveBtn"
+            class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+        >Save JSON</button>
+        <button
+            id="loadBtn"
+            class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition"
+        >Load JSON</button>
+        <button
+            id="dellBtn"
+            class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+        >Delete JSON</button>
+    </div>
+    <div class="flex flex-row flex-wrap justify-center gap-4 mb-6">
+        <select
+            id="lang"
+            onchange="setLanguage(this.value)"
+            class="p-2 border rounded-lg bg-white text-gray-700 transition"
+        >
+            <option
+                value="en"
+            >EN</option>
+
+            <option
+                value="ru"
+            >RU</option>
+        </select>
+
+        <select
+            id="renderMode"
+            class="p-2 border rounded-lg bg-white text-gray-700 transition"
+        >
+            <option
+                value="sync"
+            >Synchronous rendering</option>
+
+            <option
+                value="async"
+                disabled=""
+            >Asynchronous rendering (in dev)</option>
+        </select>
+    </div>
+
+    <div id="loadingIndicator" class="text-blue-600 mb-6 hidden">Please Wait...</div>
+
+    <div id="output" class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <!-- It's for display JSON tree -->
+    </div>
+
+
+    <script src="src/lang.js"></script>
+    <script src="src/database.js"></script>
+    <script src="src/visualizator.js"></script>
+  </body>
+</html>
